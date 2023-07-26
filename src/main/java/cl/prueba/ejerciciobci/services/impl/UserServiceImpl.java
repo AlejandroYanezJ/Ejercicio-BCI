@@ -71,6 +71,7 @@ public class UserServiceImpl implements UserService {
                 .modified(actualDate)
                 .lastLogin(actualDate)
                 .token(tokenService.generateToken(user.getEmail()))
+                .isActive(true)
                 .build();
     }
 
