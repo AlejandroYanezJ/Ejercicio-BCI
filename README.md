@@ -37,8 +37,8 @@ Además se utilizó groovy con el framework Spock para la creacion de test
 Esta aplicacion cuenta con un unico endpoint el cual sirve para crear usuarios
 
 <b>  METHOD POST /users/sign-up </b>
-    ---
-    La estructura del body de la peticion debe ser la siguiente:
+    
+La estructura del body de la peticion debe ser la siguiente:
 
          {
             "name": "Alejandro Yañez",
