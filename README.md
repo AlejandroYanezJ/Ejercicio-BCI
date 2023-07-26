@@ -33,8 +33,10 @@ Además se utilizó groovy con el framework Spock para la creacion de test
 ---
 
 ### Endpoint
+
 Esta aplicacion cuenta con un unico endpoint el cual sirve para crear usuarios
-1. <b>  METHOD POST /users/sign-up </b>
+
+<b>  METHOD POST /users/sign-up </b>
     ---
     La estructura del body de la peticion debe ser la siguiente:
 
@@ -51,7 +53,11 @@ Esta aplicacion cuenta con un unico endpoint el cual sirve para crear usuarios
             ]
         }
 
-   **nota: En caso de tener problema con la validacion del formato para email o contraseña leer el siguiente punto.
+   Notas:
+ 
+      1. Los elementos name, email y password son requeridos.
+      2. El elemento phones es opcional pero en caso de enviar un telefono todos sus campos son obligatorios.
+      3. En caso de tener problema con la validacion del formato para email o contraseña leer el siguiente punto para comprobar o configurar la validacion.
 ---
 
 ### Configuracion validaciones
