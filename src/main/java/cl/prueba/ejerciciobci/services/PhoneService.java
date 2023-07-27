@@ -16,6 +16,6 @@ public interface PhoneService {
 
     public void deletePhonesFromUserId(Long userId) throws UserException;
 
-    public List<PhoneDTO> updatePhonesUser(List<PhoneDTO> phones, Long userId);
+    public List<PhoneDTO> updatePhonesUser(List<PhoneDTO> phones, Long userId) throws UserException;
 
     }

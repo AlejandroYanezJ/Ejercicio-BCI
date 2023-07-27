@@ -72,12 +72,76 @@ public class PhoneServiceImpl implements PhoneService {
         }catch (Exception e){
             throw new UserException(500,Constants.PHONES_DELETE_ERROR);
         }
-
     }
 
-    public List<PhoneDTO> updatePhonesUser(List<PhoneDTO> phones, Long userId) {
-        return null;
+    public List<PhoneDTO> updatePhonesUser(List<PhoneDTO> phones, Long userId) throws UserException {
+        try{
+            List<PhoneEntity> phonesEntityList = phoneRespository.findByUserId(userId);
+            if(Objects.nonNull(phones) && phones.size()>0){
+                List<PhoneEntity> newPhones = getNewPhonesUpdate(phonesEntityList, phones,userId);
+                newPhones = phoneRespository.saveAll(newPhones);
+                return getPhoneDTOListFromEntity(newPhones);
+            }
+            else{
+                return getPhoneDTOListFromEntity(phonesEntityList);
+            }
+        }catch (UserException e){
+            throw e;
+        }catch(Exception e){
+            throw new UserException(500, Constants.PHONES_UPDATE_ERROR);
+        }
     }
+
+    public List<PhoneEntity> getNewPhonesUpdate (List<PhoneEntity> phoneEntityList, List<PhoneDTO> phoneDTOS,Long userId) throws UserException {
+        List<PhoneEntity> newPhones = getPhoneEntityListFromDTO(phoneDTOS,userId);
+        List<PhoneEntity> updatePhones = numbersToUpdate(newPhones, phoneEntityList);
+        List<PhoneEntity> deletePhones = numbersToDelete(newPhones,phoneEntityList);
+        try{
+            phoneRespository.deleteAll(deletePhones);
+            return updatePhones;
+        } catch(Exception e){
+            throw new UserException(500,Constants.PHONES_DELETE_ERROR);
+        }
+    }
+
+    public List<PhoneEntity> numbersToUpdate(List<PhoneEntity> newPhones, List<PhoneEntity> phonesDB){
+       List<PhoneEntity> response = new ArrayList<>(newPhones);
+        for (PhoneEntity np: response){
+            for (PhoneEntity p:phonesDB) {
+                if (isSameNumber(p,np)){
+                    np.setId(p.getId());
+                }
+            }
+        }
+       return response;
+    }
+
+    boolean isSameNumber(PhoneEntity number1, PhoneEntity number2){
+        if(number1.getNumber().equalsIgnoreCase(number2.getNumber())
+                && number1.getCitycode().equalsIgnoreCase(number2.getCitycode())
+                && number1.getContrycode().equalsIgnoreCase(number2.getContrycode())){
+            return true;
+        }
+        return false;
+    }
+
+    public List<PhoneEntity> numbersToDelete(List<PhoneEntity> newPhones, List<PhoneEntity> phonesDB){
+        List<PhoneEntity> response = new ArrayList<>();
+        for (PhoneEntity p: phonesDB){
+            boolean found=false;
+            for (PhoneEntity np:newPhones) {
+                if (isSameNumber(p,np)){
+                    found=true;
+                }
+            }
+            if (!found){
+                response.add(p);
+            }
+        }
+        return response;
+    }
+
+
 
 
 }

@@ -34,6 +34,7 @@ public class Constants {
     public static final String PHONES_GET_ERROR = "Ha ocurrido un error obteniendo los telefonos del usuario";
     public static final String PHONES_DELETE_ERROR = "Ha ocurrido un error eliminando los telefonos del usuario";
     public static final String PHONES_INSERT_ERROR = "Ha ocurrido un error almacenando los telefonos del usuario";
+    public static final String PHONES_UPDATE_ERROR = "Ha ocurrido un error actualizando los telefonos del usuario";
     public static final String GENERIC_ERROR = "Ha ocurrido un error interno en la aplicacion";
 
 }

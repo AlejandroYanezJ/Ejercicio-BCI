@@ -124,7 +124,6 @@ public class UserServiceImpl implements UserService {
                     UserEntity newEntity = getDataUpdateUser(user, entity);
                     newEntity = userRepository.save(newEntity);
                     List<PhoneDTO> phones = phoneService.updatePhonesUser(user.getPhones(), entity.getId());
-
                     return UserUpdateResponseDTO.builder()
                             .user(getUserDTOFromEntityUpdate(newEntity, phones))
                             .id(newEntity.getUuid())
