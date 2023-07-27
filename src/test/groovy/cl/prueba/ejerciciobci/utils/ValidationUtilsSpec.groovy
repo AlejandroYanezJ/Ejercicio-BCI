@@ -1,14 +1,14 @@
 package cl.prueba.ejerciciobci.utils
 
 import cl.prueba.ejerciciobci.dto.PhoneDTO
-import cl.prueba.ejerciciobci.dto.UserSignUpRequestDTO
+import cl.prueba.ejerciciobci.dto.UserDTO
 import spock.lang.Specification
 
 class ValidationUtilsSpec extends Specification{
 
     ValidationUtils validationUtils
 
-    UserSignUpRequestDTO userSignUpRequestDTO
+    UserDTO userSignUpRequestDTO
 
     void setup(){
 
@@ -17,14 +17,14 @@ class ValidationUtilsSpec extends Specification{
         if(!Objects.nonNull(validationUtils.passwordRgx)) validationUtils.passwordRgx="^([A-Za-z@.&\\d]){8,12}\$"
         PhoneDTO phoneDTO = new PhoneDTO("54360080","9","56");
         ArrayList<PhoneDTO> phoneDTOArrayList = Arrays.asList(phoneDTO);
-        userSignUpRequestDTO = new UserSignUpRequestDTO("Alejandro Yañez", "alejandro.yanezj@utem.cl", "password123",phoneDTOArrayList)
+        userSignUpRequestDTO = new UserDTO("Alejandro Yañez", "alejandro.yanezj@utem.cl", "password123",phoneDTOArrayList)
     }
 
     def "Validacion de objeto para creacion de usuario"(){
         given:
         def user = userSignUpRequestDTO
         when:"Se llama al metodo para validar el usuario"
-        validationUtils.validationUserRequest(user)
+        validationUtils.validationUserSignUpRequest(user)
         then:
         void
     }

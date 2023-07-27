@@ -1,8 +1,8 @@
 package cl.prueba.ejerciciobci.controller
 
 import cl.prueba.ejerciciobci.dto.PhoneDTO
-import cl.prueba.ejerciciobci.dto.UserSignUpRequestDTO
-import cl.prueba.ejerciciobci.dto.UserSignUpResponseDTO
+import cl.prueba.ejerciciobci.dto.UserDTO
+import cl.prueba.ejerciciobci.dto.response.UserSignUpResponseDTO
 import cl.prueba.ejerciciobci.services.UserService
 import cl.prueba.ejerciciobci.utils.DateUtils
 import spock.lang.Specification
@@ -13,7 +13,7 @@ class UserControllerSpec extends Specification{
 
     UserService userService = Stub()
     UsersController usersController
-    UserSignUpRequestDTO userSignUpRequestDTO
+    UserDTO userSignUpRequestDTO
     UserSignUpResponseDTO userSignUpResponseDTO
 
     void setup(){
@@ -21,7 +21,7 @@ class UserControllerSpec extends Specification{
         LocalDateTime localDate = DateUtils.getCurrentDateTime();
         PhoneDTO phoneDTO = new PhoneDTO("54360080","9","56");
         ArrayList<PhoneDTO> phoneDTOArrayList = Arrays.asList(phoneDTO);
-        userSignUpRequestDTO = new UserSignUpRequestDTO("Alejandro Yañez", "alejandro.yanezj@utem.cl", "password123",phoneDTOArrayList)
+        userSignUpRequestDTO = new UserDTO("Alejandro Yañez", "alejandro.yanezj@utem.cl", "password123",phoneDTOArrayList)
         userSignUpResponseDTO = new UserSignUpResponseDTO(userSignUpRequestDTO,"aaaa-aaaa-aaaa-aaaa",localDate.toString(),localDate.toString(),localDate.toString(),"token",true)
     }
 

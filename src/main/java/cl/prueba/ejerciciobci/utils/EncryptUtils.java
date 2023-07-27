@@ -10,7 +10,11 @@ public class EncryptUtils {
         return encoder.encode(password);
     }
 
-    public static String hiddenPassword(String password){
-        return password.replaceAll(".","*");
+    public static Boolean validatePassword(String dbPassword,String password ){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (!encoder.matches(password,dbPassword)){
+            return false;
+        }
+        return true;
     }
 }

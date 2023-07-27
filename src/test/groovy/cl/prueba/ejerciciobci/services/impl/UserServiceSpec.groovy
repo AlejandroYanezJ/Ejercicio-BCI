@@ -1,7 +1,7 @@
 package cl.prueba.ejerciciobci.services.impl
 
 import cl.prueba.ejerciciobci.dto.PhoneDTO
-import cl.prueba.ejerciciobci.dto.UserSignUpRequestDTO
+import cl.prueba.ejerciciobci.dto.UserDTO
 import cl.prueba.ejerciciobci.entity.UserEntity
 import cl.prueba.ejerciciobci.exception.UserException
 import cl.prueba.ejerciciobci.repository.PhoneRespository
@@ -11,7 +11,6 @@ import cl.prueba.ejerciciobci.utils.DateUtils
 import cl.prueba.ejerciciobci.utils.ValidationUtils
 import spock.lang.Specification
 
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 class UserServiceSpec extends Specification{
@@ -21,7 +20,7 @@ class UserServiceSpec extends Specification{
     PhoneRespository phoneRespository = Stub()
     ValidationUtils validationUtils = Stub()
     UserServiceImpl userService;
-    UserSignUpRequestDTO userSignUpRequestDTO
+    UserDTO userSignUpRequestDTO
     UserEntity userEntity
 
 
@@ -30,7 +29,7 @@ class UserServiceSpec extends Specification{
         LocalDateTime localDate = DateUtils.getCurrentDateTime();
         PhoneDTO phoneDTO = new PhoneDTO("54360080","9","56");
         ArrayList<PhoneDTO> phoneDTOArrayList = Arrays.asList(phoneDTO);
-        userSignUpRequestDTO = new UserSignUpRequestDTO("Alejandro Yañez", "alejandro.yanezj@utem.cl", "password123",phoneDTOArrayList)
+        userSignUpRequestDTO = new UserDTO("Alejandro Yañez", "alejandro.yanezj@utem.cl", "password123",phoneDTOArrayList)
         userEntity = new UserEntity(1L,"aaaa-aaaa-aaaa-aaaa","Alejandro Yañez","alejandro.yanezj@utem.cl","*********",localDate,localDate,localDate,"token jwt",true)
 
     }
