@@ -41,4 +41,5 @@ public class UsersController {
     public ResponseEntity<UserDeleteResponseDTO> deleteUser(@RequestHeader(value = "Authorization") String token, @RequestBody UserDeleteRequestDTO request) throws UserException {
         return new ResponseEntity<>(userService.deleteUser(request, token),null, HttpStatus.OK);
     }
+
 }
