@@ -65,7 +65,6 @@ public class ValidationUtils {
     }
 
     public void validationUserUpdateRequest(UserUpdateRequestDTO user) throws UserException {
-        validationUuidFormat(user.getId());
         if(Objects.nonNull(user.getEmail())) validationEmail(user.getEmail());
         if(Objects.nonNull(user.getPassword())) validationPassword(user.getPassword());
         if(Objects.nonNull(user.getPhones())) validationPhones(user.getPhones());

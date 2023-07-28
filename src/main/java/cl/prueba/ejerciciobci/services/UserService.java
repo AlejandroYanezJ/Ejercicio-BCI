@@ -16,7 +16,6 @@ public interface UserService {
     public UserSignUpResponseDTO registerUser(UserDTO user) throws Exception;
     public UserLoginResponseDTO loginUser(UserLoginRequestDTO user) throws Exception;
     public UserDeleteResponseDTO deleteUser(UserDeleteRequestDTO id, String token) throws UserException;
-
     public UserUpdateResponseDTO updateUser(UserUpdateRequestDTO user, String token)throws UserException;
 
     }

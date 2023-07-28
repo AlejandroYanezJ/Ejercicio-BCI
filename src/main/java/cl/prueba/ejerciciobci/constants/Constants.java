@@ -14,7 +14,7 @@ public class Constants {
     public static final String EMPTY_PHONES_CONTRYCODE="contrycode no puede ser vacío/nulo";
     public static final String INVALID_PSW = "Contraseña inválida, validar las reglas para contraseña";
     public static final String INVALID_EMAIL = "Email inválido, validar las reglas para email";
-    public static final String INVALID_UUID = "Id invalido, por favor corroborar el id del usuario";
+    public static final String INVALID_UUID = "Formato de ID inválido. Por favor corroborar el id del usuario";
 
     //validaciones usuario
     public static final String EMAIL_EXIST = "El email ya se encuentra registrado";
@@ -23,7 +23,6 @@ public class Constants {
     public static final String USER_NOT_FOUND_BY_ID="No existe un usuario para el id ingresado";
 
     //ok
-
     public static final String USER_DELETE_SUCCESS = "EL usuario ha sido eliminado correctamente";
 
     //Errores

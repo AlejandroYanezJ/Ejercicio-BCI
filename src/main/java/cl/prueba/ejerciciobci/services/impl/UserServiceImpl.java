@@ -92,6 +92,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDeleteResponseDTO deleteUser(UserDeleteRequestDTO request,String token) throws UserException {
+        validationUtils.validationUuidFormat(request.getId());
         tokenService.validateToken(token, request.getId());
         validationUtils.validationUuidFormat(request.getId());
         try{
@@ -114,6 +115,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserUpdateResponseDTO updateUser(UserUpdateRequestDTO user, String token)throws UserException{
+        validationUtils.validationUuidFormat(user.getId());
         tokenService.validateToken(token, user.getId());
         validationUtils.validationUserUpdateRequest(user);
         try{
