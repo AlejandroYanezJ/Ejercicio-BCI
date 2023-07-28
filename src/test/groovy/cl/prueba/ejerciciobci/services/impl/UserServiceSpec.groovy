@@ -6,6 +6,7 @@ import cl.prueba.ejerciciobci.entity.UserEntity
 import cl.prueba.ejerciciobci.exception.UserException
 import cl.prueba.ejerciciobci.repository.PhoneRespository
 import cl.prueba.ejerciciobci.repository.UserRepository
+import cl.prueba.ejerciciobci.services.PhoneService
 import cl.prueba.ejerciciobci.services.TokenService
 import cl.prueba.ejerciciobci.utils.DateUtils
 import cl.prueba.ejerciciobci.utils.ValidationUtils
@@ -17,7 +18,7 @@ class UserServiceSpec extends Specification{
 
     UserRepository userRepository = Stub()
     TokenService tokenService = Stub()
-    PhoneRespository phoneRespository = Stub()
+    PhoneService phoneService = Stub()
     ValidationUtils validationUtils = Stub()
     UserServiceImpl userService;
     UserDTO userSignUpRequestDTO
@@ -25,7 +26,7 @@ class UserServiceSpec extends Specification{
 
 
     void setup(){
-        userService = new UserServiceImpl(userRepository,tokenService,phoneRespository,validationUtils);
+        userService = new UserServiceImpl(userRepository,tokenService,phoneService,validationUtils);
         LocalDateTime localDate = DateUtils.getCurrentDateTime();
         PhoneDTO phoneDTO = new PhoneDTO("54360080","9","56");
         ArrayList<PhoneDTO> phoneDTOArrayList = Arrays.asList(phoneDTO);

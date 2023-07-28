@@ -21,6 +21,7 @@ public class Constants {
     public static final String USER_PSW_EMAIL_ERROR = "Email y/o contraseña incorrectos";
     public static final String USER_INACTIVE= "El usuario no se encuentra activo";
     public static final String USER_NOT_FOUND_BY_ID="No existe un usuario para el id ingresado";
+    public static final String USER_UPDATE_EMPTY="No existen datos para actualizar el usuario";
 
     //ok
     public static final String USER_DELETE_SUCCESS = "EL usuario ha sido eliminado correctamente";

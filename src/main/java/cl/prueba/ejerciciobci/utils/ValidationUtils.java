@@ -65,6 +65,13 @@ public class ValidationUtils {
     }
 
     public void validationUserUpdateRequest(UserUpdateRequestDTO user) throws UserException {
+        if(!Objects.nonNull(user.getName())
+            && !Objects.nonNull(user.getEmail())
+            && !Objects.nonNull(user.getPassword())
+            && !Objects.nonNull(user.getPhones())
+            && !Objects.nonNull(user.getIsActive())){
+            throw new UserException(400,Constants.USER_UPDATE_EMPTY);
+        }
         if(Objects.nonNull(user.getEmail())) validationEmail(user.getEmail());
         if(Objects.nonNull(user.getPassword())) validationPassword(user.getPassword());
         if(Objects.nonNull(user.getPhones())) validationPhones(user.getPhones());
