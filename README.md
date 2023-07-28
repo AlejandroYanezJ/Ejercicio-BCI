@@ -3,8 +3,9 @@
 ---
 
 ### Resumen
-En este microservicio se disponibiliza un endpoint para la creacion y persistencia de usuarios en una base de datos h2.
-Fue desarrollado en Java 1.8 y springboot 2.7.15 y construido con gradle.
+En este microservicio se disponibiliza 4 endpoint para la creacion, consulta, actualizacion y borrado de usuarios.
+Los datos son persistentes en una base de datos h2 la cual se mantiene en memoria.
+Para el desarrollo se usó  Java 1.8 y springboot 2.7.15 y construido con gradle.
 Además se utilizó groovy con el framework Spock para la creacion de test
 ---
 
